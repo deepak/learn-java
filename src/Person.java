@@ -17,10 +17,12 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", githubID=" + githubID +
-                '}';
+        return String.format("Person{name='%s', age=%d, githubID=%d}",
+                name, age, githubID);
+//        return "Person{" +
+//                "name='" + name + '\'' +
+//                ", age=" + age +
+//                ", githubID=" + githubID +
+//                '}';
     }
 }
