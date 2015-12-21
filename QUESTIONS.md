@@ -18,5 +18,30 @@
   JEP 222: jshell: The Java Shell (Read-Eval-Print Loop)
   http://openjdk.java.net/jeps/222
   
+- Intellij has a wizard for generating equals and hashCode
   
+  - accept subclasses
+  - use getters
+  - fields to include in equals
+  - fields to include in hashCode
+  - select not-null fields so that null check can be skipped
+  
+  any way to declaratively encode these decisions, rather than generating code ?
+  mabe a DSL
+  
+  and lint that no field can be missed ?
+  
+  also why choose 31 for hashCode ?
+  
+  ```java
+   public int hashCode() {
+      int result = name != null ? name.hashCode() : 0;
+      result = 31 * result + age;
+      result = 31 * result + (githubID != null ? githubID.hashCode() : 0);
+      return result;
+   }
+  ```
+  
+
+
   
