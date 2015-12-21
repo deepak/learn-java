@@ -1,5 +1,7 @@
 ### Questions
 
+- why does int default to 0 and Integer (boxed) default to null ?
+
 - @NotNull annotation  
   can use javax @NotNull annotation with spring, or guice also i think. 
   but which one to use ?
