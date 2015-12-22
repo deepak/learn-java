@@ -16,6 +16,9 @@ public class Main {
         // this will error out. will have to compare will null as below
         // have mixed feelings about this.
         // if (null) System.out.println("null is true");
+        // and neither does these
+        // if (1) System.out.println("1 is true");
+        // System.out.println("boolean value of 1: " + (!!1));
 
         // this works
         if (null == null) System.out.println("null is true");
