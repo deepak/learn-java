@@ -31,6 +31,10 @@ public class Main {
         // persons[1] = new Object(); // type error
         persons[1] = new Programmer("p1", 1234); // works with sub-class
 
+        // compiler catches ArrayIndexOutOfBoundsException at compile-time
+        // but Intellij does not
+        // persons[2] = p2;
+
         System.out.println("persons: " + Arrays.toString(persons));
     }
 }

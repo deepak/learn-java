@@ -61,12 +61,20 @@
    }
   ```
   
-  - was going to ask, is there a method to get the boolean value ?  
-    but the question is non-sensensical  
-    as only boolean can be a conditional  
-    !!null of !!1 is not a boolean  
-    ie. no autocast from a type to boolean  
-    but if there a method to be overridden for converting to boolean ?  
+- was going to ask, is there a method to get the boolean value ?  
+  but the question is non-sensensical  
+  as only boolean can be a conditional  
+  !!null of !!1 is not a boolean  
+  ie. no autocast from a type to boolean  
+  but if there a method to be overridden for converting to boolean ?  
 
+- compiler catches ArrayIndexOutOfBoundsException at compile-time
+  but Intellij does not. why ?
 
+  ```java
+  Person[] persons = new Person[2];
+  persons[2] = new Person()
+  ```
+
+  
   
