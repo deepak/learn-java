@@ -3,7 +3,7 @@ import java.util.Objects;
 public class Person {
     private String name;
     private int age; // defaults to 0 - if not initialized
-    private Integer githubID; // defaults to null - if not initialized
+    private Integer pinCode; // defaults to null - if not initialized
 
     public Person() {
     }
@@ -16,18 +16,14 @@ public class Person {
         this.name = name;
     }
 
-    public void setGithubID(Integer githubID) {
-        this.githubID = githubID;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
         return String.format("Person{name='%s', age=%d, githubID=%d}",
-                name, age, githubID);
+                name, age, pinCode);
 //        return "Person{" +
 //                "name='" + name + '\'' +
 //                ", age=" + age +
@@ -44,7 +40,7 @@ public class Person {
 
         if (age != person.age) return false;
         if (name != null ? !name.equals(person.name) : person.name != null) return false;
-        return !(githubID != null ? !githubID.equals(person.githubID) : person.githubID != null);
+        return !(pinCode != null ? !pinCode.equals(person.pinCode) : person.pinCode != null);
 
     }
 
@@ -52,7 +48,7 @@ public class Person {
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + age;
-        result = 31 * result + (githubID != null ? githubID.hashCode() : 0);
+        result = 31 * result + (pinCode != null ? pinCode.hashCode() : 0);
         return result;
     }
 }

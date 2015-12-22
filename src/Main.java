@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Main {
@@ -7,7 +8,7 @@ public class Main {
         p1.setName("p1");
         System.out.println(p1);
 
-        Person p2 = new Person("p1");
+        Person p2 = new Person("p2");
 
         // Object.equals will check for null
         System.out.println("person equal null: " + Objects.equals(p1, null));
@@ -22,5 +23,14 @@ public class Main {
 
         // this works
         if (null == null) System.out.println("null is true");
+
+        Person[] persons = new Person[2];
+        persons[0] = p1;
+
+        // persons[1] = new Integer(1); // type error
+        // persons[1] = new Object(); // type error
+        persons[1] = new Programmer("p1", 1234); // works with sub-class
+
+        System.out.println("persons: " + Arrays.toString(persons));
     }
 }
