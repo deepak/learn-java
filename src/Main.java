@@ -12,5 +12,12 @@ public class Main {
         // Object.equals will check for null
         System.out.println("person equal null: " + Objects.equals(p1, null));
         System.out.println("both person equal: " + Objects.equals(p1, p2));
+
+        // this will error out. will have to compare will null as below
+        // have mixed feelings about this.
+        // if (null) System.out.println("null is true");
+
+        // this works
+        if (null == null) System.out.println("null is true");
     }
 }
