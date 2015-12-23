@@ -59,6 +59,23 @@ public class Main {
 
         System.out.println("8'th month is: " + monthName(8));
         System.out.println("Day.TUESDAY is: " + dayName(Day.TUESDAY));
+
+        // can give labels to loops and break out of them specifically
+        // normally break will break out of only the enclosing block ie. the next closing '}'
+        int count = 0;
+        OUTER_LOOP: while (count < 10) {
+            switch (count) {
+                case 5:
+                    System.out.println("midway");
+                    break;
+                case 8:
+                    System.out.println("almost there");
+                    break OUTER_LOOP;
+            }
+
+            ++count;
+        }
+        System.out.println("count: " + count); // => 8
     }
 
     @Contract(pure = true)

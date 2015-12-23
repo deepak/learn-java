@@ -135,3 +135,24 @@
   
 11. Integer is final and cannot define a sub-class of Integer
     are all types in core java final ?
+    
+12. does ruby have something similar to named loops and break ?
+
+    ```java
+    // can give labels to loops and break out of them specifically
+    // normally break will break out of only the enclosing block ie. the next closing '}'
+    int count = 0;
+    OUTER_LOOP: while (count < 10) {
+        switch (count) {
+            case 5:
+                System.out.println("midway");
+                break;
+            case 8:
+                System.out.println("almost there");
+                break OUTER_LOOP;
+        }
+    
+        ++count;
+    }
+    System.out.println("count: " + count); // => 8
+    ```
