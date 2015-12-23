@@ -156,3 +156,14 @@
     }
     System.out.println("count: " + count); // => 8
     ```
+   
+13. which collection to use when ?
+    eg. ArrayList is resizeable, so always use it instead of an Array ?
+    any desision tree or articles for which collection to use in which situation ?
+    
+    points to consider (i guess):
+    1. thread safe
+    2. size per item
+    3. size of whole collection
+    3. flexiblity
+    

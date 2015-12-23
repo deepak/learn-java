@@ -1,6 +1,8 @@
 import org.jetbrains.annotations.Contract;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Main {
@@ -26,18 +28,27 @@ public class Main {
         // this works
         if (null == null) System.out.println("null is true");
 
+        Programmer programmer1 = new Programmer("p1", 1234);
+
         Person[] persons = new Person[2];
         persons[0] = p1;
 
         // persons[1] = new Integer(1); // type error
         // persons[1] = new Object(); // type error
-        persons[1] = new Programmer("p1", 1234); // works with sub-class
+        persons[1] = programmer1; // works with sub-class
 
         // compiler catches ArrayIndexOutOfBoundsException at compile-time
         // but Intellij does not
         // persons[2] = p2;
 
         System.out.println("persons: " + Arrays.toString(persons));
+
+        List<Person> personList = new ArrayList<Person>(1);
+        personList.add(p1);
+        personList.add(programmer1); // works with sub-class
+        personList.add(p2); // ArrayList will resize
+
+        System.out.println("persons: " + personList);
 
         // does not work
         // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html
