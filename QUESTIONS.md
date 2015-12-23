@@ -76,5 +76,25 @@
   persons[2] = new Person()
   ```
 
+- why does switch not work with complex types ?
+  when can add a complex type to a hash and its hashCode and equals method is used
+  why not use equals for switch ?
+  also how does type-safety work for switch ?
+ 
+  ```java
+  Person p1 = new Person("p1");
+  Person p2 = new Person("p2");
   
+  // does not work
+  switch (p2) {
+       case p1:
+           System.out.println("switch to p1");
+           break;
+       case p2:
+           System.out.println("switch to p1");
+           break;
+       default:
+           System.out.println("nothing to switch");
+  }  
+  ```
   
