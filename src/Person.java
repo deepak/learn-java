@@ -41,7 +41,6 @@ public class Person {
         if (age != person.age) return false;
         if (name != null ? !name.equals(person.name) : person.name != null) return false;
         return !(pinCode != null ? !pinCode.equals(person.pinCode) : person.pinCode != null);
-
     }
 
     @Override

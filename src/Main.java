@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.Contract;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -56,8 +58,10 @@ public class Main {
         // }
 
         System.out.println("8'th month is: " + monthName(8));
+        System.out.println("Day.TUESDAY is: " + dayName(Day.TUESDAY));
     }
 
+    @Contract(pure = true)
     public static String monthName(int month) {
         String monthString;
 
@@ -92,5 +96,26 @@ public class Main {
         }
 
         return monthString;
+    }
+
+    // Intellij inferred that this is a pure function :-) Yay
+    // added annotations.jar provided by Intellij for this annotation
+    @Contract(pure = true)
+    public static String dayName(Day day) {
+        String dayString;
+
+        // will not work with Day.TUESDAY
+        switch (day) {
+            case MONDAY:
+                dayString = "monday";
+                break;
+            case TUESDAY:
+                dayString = "tuesday";
+                break;
+            default:
+                dayString = "not monday or tue.";
+        }
+
+        return dayString;
     }
 }

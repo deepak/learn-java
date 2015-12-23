@@ -98,3 +98,38 @@
   }  
   ```
   
+- Intellij inferred that a function is pure. how is that done ?
+  it added an annotation named `@Contract(pure = true)` 
+  is this part of any JSR ?
+  what is the use of annotating that a function is pure ? any side-effects or only for documentation ?
+  Intellij added a annotations jar for this
+  are people using it in production ?
+  
+- equals and hashCode is final in Enum
+  so cannot be overridden
+  why is that ?
+  what other classes have equals and hashCode as final ?
+  what method is used for matching switch ? equals ?
+  can it be overridden ? 
+  https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html
+  "A switch works with the byte, short, char, and int primitive data types.
+  It also works with enumerated types (discussed in Enum Types), the String class,
+  and a few special classes that wrap certain primitive types:
+  Character, Byte, Short, and Integer (discussed in Numbers and Strings)." 
+  
+- for an Enum what is the difference between Day.TUESDAY and TUESDAY ?
+  Day.TUESDAY seems more like an instance and TUESDAY is special for switch statements ?
+  and TUESDAY works as a switch case but Day.TUESDAY does not 
+  why ?
+  
+  ```java
+  public enum Day {
+      SUNDAY,
+      MONDAY,
+      TUESDAY,
+      WEDNESDAY,
+      THURSDAY,
+      FRIDAY,
+      SATURDAY
+  }
+  ```
