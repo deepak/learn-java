@@ -64,7 +64,7 @@
 5. was going to ask, is there a method to get the boolean value ?  
    but the question is non-sensensical  
    as only boolean can be a conditional  
-   !!null of !!1 is not a boolean  
+   !!null or !!1 is not a boolean  
    ie. no autocast from a type to boolean  
    but if there a method to be overridden for converting to boolean ?  
 
@@ -77,9 +77,8 @@
    ```
 
 7. why does switch not work with complex types ?
-   when can add a complex type to a hash and its hashCode and equals method is used
+   when we can add a complex type to a hash and its hashCode and equals method is used
    why not use equals for switch ?
-   also how does type-safety work for switch ?
  
    ```java
    Person p1 = new Person("p1");
@@ -133,3 +132,6 @@
       SATURDAY
   }
   ```
+  
+11. Integer is final and cannot define a sub-class of Integer
+    are all types in core java final ?
