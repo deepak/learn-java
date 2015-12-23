@@ -167,3 +167,34 @@
     3. size of whole collection
     3. flexiblity
     
+14. try splitting a project into 2 seperate repos/top-level projects
+    eg. one project/repo for utilities
+    and one for the actual app
+    write gradle tasks for building utilities.jar and using it in the app
+    will the dev cycle be ? 
+    - change utilities code and build jar
+    - refresh app project, so that updated utilities.jar is taken up
+    - work on app
+    or can intellij help in using the project as is and build the utilities.jar only for deployment ?
+    will it be simpler if it is a single big project but with 2 namespaces - utilities and app
+    
+15. enums are final by default ?
+    so cannot extend an enum ?
+    
+    ```java
+    public enum Day {
+        SUNDAY,
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY
+    }
+    
+    // type error that cannot inherit from final Day 
+    public enum StudidDay extends Day {
+        ZORK_DAY,
+        FOO_DAY
+    }
+    ```
