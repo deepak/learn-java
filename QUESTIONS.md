@@ -198,3 +198,18 @@
         FOO_DAY
     }
     ```
+    
+16. testing libs with junit: 
+    assertj, mockito,
+    JUnitParams,
+    junit-benchmarks, 
+    wiremock, rest-assured
+    jacoco
+    does junit randomize tests with a new seed ?
+    hamcrest vs assertj vs google truth ?
+    can we customize the junit runner output ? make it more pretty ?
+    try out TestNG as well
+    
+17. can Intellij tell if a gradle dependency is not being used ?
+    is there a service to tell if gradle dependecies are out of date ?
+    and/or have open security issues ?
