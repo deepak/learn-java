@@ -1,3 +1,5 @@
+package main;
+
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;

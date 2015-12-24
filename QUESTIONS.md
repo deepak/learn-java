@@ -213,3 +213,4 @@
 17. can Intellij tell if a gradle dependency is not being used ?
     is there a service to tell if gradle dependecies are out of date ?
     and/or have open security issues ?
+    

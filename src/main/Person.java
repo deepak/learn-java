@@ -1,4 +1,4 @@
-import java.util.Objects;
+package main;
 
 public class Person {
     private String name;
@@ -10,6 +10,12 @@ public class Person {
 
     public Person(String name) {
         this.name = name;
+    }
+
+    public Person(String name, int age, Integer pinCode) {
+        this.name = name;
+        this.age = age;
+        this.pinCode = pinCode;
     }
 
     public void setName(String name) {
