@@ -268,3 +268,6 @@
      Programmer programmer3 = new Programmer(p1);
      System.out.println("explicit person to programmer: " + programmer3);
      ```
+
+21. read interfaces vs abstract classes again.  
+    https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html

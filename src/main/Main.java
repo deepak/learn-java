@@ -45,6 +45,9 @@ public class Main {
         Programmer programmer3 = new Programmer(p1);
         System.out.println("explicit person to programmer: " + programmer3);
 
+        System.out.println("programmer is hipster: " + (programmer1 instanceof Hipster));
+        System.out.println("programmer is a programmer: " + (programmer1 instanceof Programmer));
+
         Person[] persons = new Person[2];
         persons[0] = p1;
 

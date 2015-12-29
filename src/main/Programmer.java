@@ -1,6 +1,8 @@
 package main;
 
-public class Programmer extends Person {
+public class Programmer
+        extends Person
+        implements Hipster {
     private Integer githubID;
 
     public Programmer(String name, Integer githubID) {
@@ -18,5 +20,10 @@ public class Programmer extends Person {
                 "name='" + getName() + "'" +
                 ", githubID=" + githubID +
                 '}';
+    }
+
+    @Override
+    public Integer hipsterHandshake() {
+        return 42;
     }
 }
