@@ -214,3 +214,13 @@
     is there a service to tell if gradle dependecies are out of date ?
     and/or have open security issues ?
     
+18. general Q. while testing it is expected to have a failing and passing test  
+    but is there any technique to enforce that ?  
+    other than the moral character of the programmer :-) ?
+    
+19. opinion on Given, When and Then for testing ?  
+    http://www.alexecollins.com/given-when-then-junit/  
+    as an organization principle for tests ?  
+    not using Gherkin, a non junit library or s special DSL  
+    just simple blocks of code, commented with descriptive Given, When and Thens  
+    
