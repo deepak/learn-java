@@ -314,3 +314,33 @@
     System.out.println("new person: " + p4.toString());
 
     ```
+    
+23. how to refer to methods while talking to people ?
+    eg. in ruby we name a class method as . or ::
+    ie. Person.config and # for instance methods
+    eg. Person#age
+    is more of a speaking and docs convention ?
+    
+    anything similar in Java ?
+    
+    ```java
+    public class Programmer
+            extends Person
+            implements Hipster {
+    
+        public static Map<String, Object> getConfig() {
+            Map<String, Object> config = new HashMap<String, Object>(3);
+            config.put("address", "is not needed");
+            config.put("knowledge of java", "is needed");
+            return config;
+        }
+    
+        public void requireJava() {
+            Map<String, Object> config = Programmer.getConfig();
+            config.get("knowledge of java");
+        }
+    }
+    ```
+    
+    will both getConfig and requireJava be named as  
+    Programmer.requireJava and Programmer.getConfig ?  
