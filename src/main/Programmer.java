@@ -8,6 +8,10 @@ public class Programmer extends Person {
         this.githubID = githubID;
     }
 
+    public Programmer(Person person) {
+        super(person.getName());
+    }
+
     @Override
     public String toString() {
         return "Programmer{" +

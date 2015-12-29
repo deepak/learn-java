@@ -32,6 +32,19 @@ public class Main {
 
         Programmer programmer1 = new Programmer("p1", 1234);
 
+        // runs without any runtime errors
+        Person p3  = programmer1;
+        System.out.println("programmer to person: " + p3);
+
+        // downcast fails at runtime with ClassCastException. but Intellij did not show any warning
+        // http://stackoverflow.com/questions/4862960/explicit-casting-from-super-class-to-subclass
+        // Programmer programmer2 = (Programmer) p1;
+        // System.out.println("person to programmer: " + programmer2);
+
+        // works. but implicit downcast above fails
+        Programmer programmer3 = new Programmer(p1);
+        System.out.println("explicit person to programmer: " + programmer3);
+
         Person[] persons = new Person[2];
         persons[0] = p1;
 

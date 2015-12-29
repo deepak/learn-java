@@ -224,3 +224,47 @@
     not using Gherkin, a non junit library or s special DSL  
     just simple blocks of code, commented with descriptive Given, When and Thens  
     
+20. Intellij did not show warning for downcast which fails at runtime
+ 
+    ```java
+    public class Person {
+        private String name;
+        private int age; // defaults to 0 - if not initialized
+        private Integer pinCode; // defaults to null - if not initialized
+    
+        public Person() {
+        }
+    
+        public Person(String name) {
+            this.name = name;
+        }
+    
+        public Person(String name, int age, Integer pinCode) {
+            this.name = name;
+            this.age = age;
+            this.pinCode = pinCode;
+        }
+     }
+     
+    public class Programmer extends Person {
+        private Integer githubID;
+     
+        public Programmer(String name, Integer githubID) {
+            super(name);
+            this.githubID = githubID;
+        }
+     
+        public Programmer(Person person) {
+            super(person.getName());
+        }
+    }
+
+     // downcast fails at runtime with ClassCastException. but Intellij did not show any warning
+     // http://stackoverflow.com/questions/4862960/explicit-casting-from-super-class-to-subclass
+     Programmer programmer2 = (Programmer) p1;
+     System.out.println("person to programmer: " + programmer2);
+    
+     // works
+     Programmer programmer3 = new Programmer(p1);
+     System.out.println("explicit person to programmer: " + programmer3);
+     ```
