@@ -344,3 +344,8 @@
     
     will both getConfig and requireJava be named as  
     Programmer.requireJava and Programmer.getConfig ?  
+    
+24. what is the use for the @Override annotation. documentation only ?
+    Intellij can tell and navigate to the overridden method even 
+    when @Override annotation is not there
+    and it does not change the output of the program

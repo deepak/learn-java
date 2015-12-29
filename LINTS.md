@@ -1,6 +1,10 @@
 ## Lints
 
 1. all Overridden methods must have an `@Override` annotation
+   kind of useless though. good for only documentation
+   Intellij can tell and navigate to the overridden method even 
+   when @Override annotation is not there
+   and it does not change the output of the program
 
 ## Style Guide
 
