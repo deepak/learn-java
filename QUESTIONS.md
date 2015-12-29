@@ -271,3 +271,46 @@
 
 21. read interfaces vs abstract classes again.  
     https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
+    
+22. Intellij sucks with code navigation, when virtual method invocation is used with Polymorphism  
+    
+    ```java
+    public class Person {
+        private String name;
+        private int age; // defaults to 0 - if not initialized
+        private Integer pinCode; // defaults to null - if not initialized
+        
+        public Person() {
+        }
+        
+        public Person(String name) {
+            this.name = name;
+        }
+        
+        public Person(String name, int age, Integer pinCode) {
+            this.name = name;
+            this.age = age;
+            this.pinCode = pinCode;
+        }
+    }
+         
+    public class Programmer extends Person {
+        private Integer githubID;
+         
+        public Programmer(String name, Integer githubID) {
+            super(name);
+            this.githubID = githubID;
+        }
+         
+        public Programmer(Person person) {
+            super(person.getName());
+        }
+    }
+        
+    // irritating that on navigating code, Intellij took me to Person.toString()
+    // not Programmer.toString
+    // even when Programmer.toString is called at runtime
+    Person p4 = new Programmer("p4", 1);
+    System.out.println("new person: " + p4.toString());
+
+    ```

@@ -36,6 +36,12 @@ public class Main {
         Person p3  = programmer1;
         System.out.println("programmer to person: " + p3);
 
+        // irritating that on navigating code which uses Polymorphism,
+        // Intellij took me to Person.toString() not Programmer.toString
+        // even when at runtime, that is called
+        Person p4 = new Programmer("p4", 1);
+        System.out.println("new person: " + p4.toString());
+
         // downcast fails at runtime with ClassCastException. but Intellij did not show any warning
         // http://stackoverflow.com/questions/4862960/explicit-casting-from-super-class-to-subclass
         // Programmer programmer2 = (Programmer) p1;
