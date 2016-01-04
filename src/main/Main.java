@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -117,6 +119,10 @@ public class Main {
 
         System.out.println("dog: " + dog);
         System.out.println("animal: " + animal);
+
+        String[] sarr = new String[0];
+        final Set<String> collect = Arrays.stream(sarr).collect(Collectors.toSet());
+        System.out.println("set from stream: " + collect);
     }
 
     @Contract(pure = true)

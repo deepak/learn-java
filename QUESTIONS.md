@@ -349,3 +349,12 @@
     Intellij can tell and navigate to the overridden method even 
     when @Override annotation is not there
     and it does not change the output of the program
+    
+25. for inheritance any way of inheriting tests as well with junit, other than copy-and-paste ?
+    eg. we have an Person class and a Programmer class which inherits from Person
+    Person has 4 tests (including one for forString and constructor)
+    so Programmer has 2 common test (maybe)
+    seems like a stupid Q. would create a custom matcher in rspec (ruby)
+    any other options ?
+    try out abstract junit test class
+ 
