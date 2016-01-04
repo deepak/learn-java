@@ -5,6 +5,9 @@
    Intellij can tell and navigate to the overridden method even 
    when @Override annotation is not there
    and it does not change the output of the program
+2. using a c style for loop for a collection.
+   eg. use `for (Foo a : arr)` rather than `for (int i = 0; i < arr.length(); i++)`
+
 
 ## Style Guide
 
