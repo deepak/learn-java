@@ -357,4 +357,73 @@
     seems like a stupid Q. would create a custom matcher in rspec (ruby)
     any other options ?
     try out abstract junit test class
- 
+    
+26. why is the constructor in a abstract class special ?
+    no need to override the getter and setter in a abstract class
+    but need to do for the constructor ?
+    
+    ```java    
+    public abstract class ChecklistItem {
+    
+        public String name;
+    
+        public ChecklistItem(String name) {
+            this.name = name;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public void setName(String name) {
+            this.name = name;
+        }
+    
+        public abstract String getFormalName();
+    }
+    
+    public class TodoItem extends ChecklistItem {
+        public TodoItem(String name) {
+            super(name);
+        }
+    
+        @Override
+        public String getFormalName() {
+            return "[TODO] " + name;
+        }
+    }
+    ```
+    
+27. can we add an abstract constructor ?
+
+    ```java
+    public abstract class ChecklistItem {
+    
+        public String name;
+    
+        public ChecklistItem(String name) {
+            this.name = name;
+        }
+        
+        // not allowed
+        //public abstract ChecklistItem(int one, int two);
+    
+        public String getName() {
+            return name;
+        }
+    
+        public void setName(String name) {
+            this.name = name;
+        }
+    
+        public abstract String getFormalName();
+    }
+    ```
+    
+28. ruby question
+    calling a different super-class method in the base-class 
+    https://gist.github.com/deepak/5fe96a9a70d2693b8df3
+    
+29. what is the convention for writing the method signature ?
+    eg. both `public abstract String getFormalName();` and `abstract public String getFormalName();` 
+    works in an abstract class

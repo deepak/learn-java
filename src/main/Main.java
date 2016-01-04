@@ -123,6 +123,9 @@ public class Main {
         String[] sarr = new String[0];
         final Set<String> collect = Arrays.stream(sarr).collect(Collectors.toSet());
         System.out.println("set from stream: " + collect);
+
+        TodoItem todo1 = new TodoItem("java");
+        System.out.println(todo1.getFormalName());
     }
 
     @Contract(pure = true)
