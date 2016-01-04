@@ -111,6 +111,12 @@ public class Main {
             ++count;
         }
         System.out.println("count: " + count); // => 8
+
+        Dog dog = new Dog("poodle", true);
+        Animal animal = new Animal("dog");
+
+        System.out.println("dog: " + dog);
+        System.out.println("animal: " + animal);
     }
 
     @Contract(pure = true)
