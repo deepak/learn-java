@@ -427,3 +427,50 @@
 29. what is the convention for writing the method signature ?
     eg. both `public abstract String getFormalName();` and `abstract public String getFormalName();` 
     works in an abstract class
+    
+30. why are the suggested type parameter names, one char long ?
+
+    https://docs.oracle.com/javase/tutorial/java/generics/types.html
+    The most commonly used type parameter names are:
+    E - Element (used extensively by the Java Collections Framework)
+    K - Key
+    N - Number
+    T - Type
+    V - Value
+    S,U,V etc. - 2nd, 3rd, 4th types
+    
+    Although other names also work eg. Type in-place of T
+    
+31. type parameter does not have super class etc ?
+    what is the type heirarchy
+    
+    ```java
+    public class Box<Type> {
+        private Type t; // not the same as the main.Type class
+        private AnotherType t2;
+        private main.Type mainType;
+    
+        public Box() {
+            this.t2 = new AnotherType();
+            this.mainType = new main.Type();
+        }
+    
+        public void set(Type t) {
+            this.t = t;
+        }
+    
+        public Type get() {
+            return t;
+        }
+    
+        @Override
+        public String toString() {
+            // cannot get Type.getClass()
+            return "Box{" +
+                    "mainType=" + mainType +
+                    ", t=" + t +
+                    ", t2=" + t2 +
+                    '}';
+        }
+    }
+    ```

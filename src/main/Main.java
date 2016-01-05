@@ -126,6 +126,11 @@ public class Main {
 
         TodoItem todo1 = new TodoItem("java");
         System.out.println(todo1.getFormalName());
+
+        Box<String> box = new Box<String>();
+        box.set("inside a box");
+        System.out.println(box.get());
+        System.out.println(box);
     }
 
     @Contract(pure = true)
