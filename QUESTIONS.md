@@ -520,3 +520,42 @@
     
     how is the generic version useful, not as if i can say something like
     only swap Strings and Persons ?
+    
+35. how to make sure a generic class always has an instance of a parameterized type
+    Box (below) always has an instance of Type
+    can create a constructor. how to DI with Spring ?
+    
+
+    ```java
+    public class Box<T> {
+        private T t1;
+        private AnotherType t2;
+    
+        public Box(T t1) {
+            // no way for us to do, `new T()`
+            this(t1, new AnotherType());
+        }
+    
+        public Box(T t1, AnotherType t2) {
+            this.t1 = t1;
+            this.t2 = t2;
+        }
+    
+        public void set(Type t) {
+            this.t = t;
+        }
+    
+        public Type get() {
+            return t;
+        }
+    
+        @Override
+        public String toString() {
+            return "Box{" +
+                    "mainType=" + mainType +
+                    ", t=" + t +
+                    ", t2=" + t2 +
+                    '}';
+        }
+    }
+    ```
