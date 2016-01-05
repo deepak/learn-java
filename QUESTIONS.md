@@ -501,4 +501,22 @@
     the most obvious refactoring would have been to migrate to Integer
     which is not suggested
     
+34. what is the difference between, 
+    the generic and the polymorphic version ?
+
+    ```java
+     public static <T> void swapItems(int i, int j, T[] arr) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+     }
     
+     public static void swapObjects(int i, int j, Object[] arr) {
+        Object temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+     }
+    ```
+    
+    how is the generic version useful, not as if i can say something like
+    only swap Strings and Persons ?

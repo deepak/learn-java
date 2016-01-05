@@ -143,10 +143,24 @@ public class Main {
         System.out.println("string array(before): " + Arrays.toString(arr2));
         swapItems(1, 3, arr2);
         System.out.println("string array(after): " + Arrays.toString(arr2));
+
+        System.out.println("integer array(before): " + Arrays.toString(arr1));
+        swapObjects(0, 3, arr1);
+        System.out.println("integer array(after): " + Arrays.toString(arr1));
+
+        System.out.println("string array(before): " + Arrays.toString(arr2));
+        swapObjects(1, 3, arr2);
+        System.out.println("string array(after): " + Arrays.toString(arr2));
     }
 
     public static <T> void swapItems(int i, int j, T[] arr) {
         T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void swapObjects(int i, int j, Object[] arr) {
+        Object temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
