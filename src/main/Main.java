@@ -131,6 +131,24 @@ public class Main {
         box.set("inside a box");
         System.out.println(box.get());
         System.out.println(box);
+
+        Integer[] arr1 = new Integer[] {1, 2, 3, 4};
+        String[] arr2 = new String[] {"a", "b", "c", "d"};
+        int[] arr3 = new int[] { 1, 2, 3, 4};
+
+        System.out.println("integer array(before): " + Arrays.toString(arr1));
+        swapItems(0, 3, arr1);
+        System.out.println("integer array(after): " + Arrays.toString(arr1));
+
+        System.out.println("string array(before): " + Arrays.toString(arr2));
+        swapItems(1, 3, arr2);
+        System.out.println("string array(after): " + Arrays.toString(arr2));
+    }
+
+    public static <T> void swapItems(int i, int j, T[] arr) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     @Contract(pure = true)

@@ -474,3 +474,31 @@
         }
     }
     ```
+    
+32. why do generics not work with primitive types ?
+
+33. Intellij does not suggest to use Integer, for an int (primitive) array
+
+    ```java
+     int[] arr3 = new int[] { 1, 2, 3, 4};
+    
+    swapItems(1, 3, arr3);
+    
+    public static <T> void swapItems(int i, int j, T[] arr) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    ```
+    
+    suggests changing the method signature to `public static <T> void swapItems(int i, int j, int[] arr)`
+    which leaves a compile error
+    
+    two other suggestions are to change & migrate array type to Object[]
+    array becomes, `Object[] arr3 = new int[] { 1, 2, 3, 4};` is the first one
+    and `Object[] arr3 = new Object[] { 1, 2, 3, 4};` for the second
+    
+    the most obvious refactoring would have been to migrate to Integer
+    which is not suggested
+    
+    
