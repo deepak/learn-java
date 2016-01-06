@@ -605,3 +605,23 @@
        // intellij is still showing the type parameter as Serializable
        CharSequence pick3 = pick("a", new RandomList<Integer>());
     ```
+    
+38. generic constructors ?
+    also type inference left me confused.   
+    what algo. does java use for type inference ?  
+    is scala magic preferable or is there a better explanation  
+    maybe read it again  
+
+    https://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html
+    
+    how to use ?
+    
+    ```java
+    class MyClass<X> {
+      <T> MyClass(T t) {
+        // ...
+      }
+    }
+    ```
+    
+    and what would be an actual example ?
