@@ -2,6 +2,7 @@ package main;
 
 import org.jetbrains.annotations.Contract;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -151,6 +152,31 @@ public class Main {
         System.out.println("string array(before): " + Arrays.toString(arr2));
         swapObjects(1, 3, arr2);
         System.out.println("string array(after): " + Arrays.toString(arr2));
+
+        Animal a1 = new Animal("dog");
+        Animal a2 = new Animal("dog");
+
+        System.out.println("dogs same:" + a1.equals(a2)); // false
+        System.out.println("dogs same:" + a1.equals(a1)); // true
+
+        AnimalBox<Animal> animalBox = new AnimalBox<>(new Cat());
+        System.out.println(animalBox);
+
+        List<Animal> al = new ArrayList<Animal>();
+
+        NaturalNumber<C> n = new NaturalNumber<>(new C());
+
+        List<Integer> list1 = new NewList(); // ok
+        // List<String> list2 = new NewList(); // type error
+
+        Serializable pick1 = pick("d", new ArrayList<String>());
+        String pick2 = pick("a", new String());
+        // intellij is still showing the type parameter as Serializable
+        CharSequence pick3 = pick("a", new RandomList<Integer>());
+    }
+
+    static <T> T pick(T a1, T a2) {
+        return a2;
     }
 
     public static <T> void swapItems(int i, int j, T[] arr) {

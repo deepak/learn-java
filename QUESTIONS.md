@@ -559,3 +559,49 @@
         }
     }
     ```
+    
+36. code golf. how to check if method is overridden for class ?
+    https://gist.github.com/deepak/eb8738218f422829496a
+    
+37. how to see inferred type ?
+    other than intellij gui
+
+    ```java
+       public class RandomList<E> extends AbstractList<E>
+               implements List<E>, RandomAccess, Cloneable, java.io.Serializable, Comparable<E>, CharSequence {
+           @Override
+           public E get(int index) {
+               return null;
+           }
+       
+           @Override
+           public int size() {
+               return 0;
+           }
+       
+           @Override
+           public int compareTo(E o) {
+               return 0;
+           }
+       
+           @Override
+           public char charAt(int index) {
+               return 0;
+           }
+       
+           @Override
+           public int length() {
+               return 0;
+           }
+       
+           @Override
+           public CharSequence subSequence(int start, int end) {
+               return null;
+           }
+       }
+    
+       Serializable pick1 = pick("d", new ArrayList<String>());
+       String pick2 = pick("a", new String());
+       // intellij is still showing the type parameter as Serializable
+       CharSequence pick3 = pick("a", new RandomList<Integer>());
+    ```
