@@ -625,3 +625,11 @@
     ```
     
     and what would be an actual example ?
+    
+39. what is the difference btw
+    regular bounded type and wildcard bounded type
+    `<T extends Animal>` and `<? extends Animal>`
+    
+40. is there a list of all the possible generic invocations
+    or something like `http://cdecl.org in c++`
+    not sure how complex the java ones can go though
