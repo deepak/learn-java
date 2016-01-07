@@ -632,4 +632,17 @@
     
 40. is there a list of all the possible generic invocations
     or something like `http://cdecl.org in c++`
-    not sure how complex the java ones can go though
+    not sure how complex the java ones can become though
+    
+41. why does Java have the rule about one public class per file  ? class-loading ?
+    there can be a different non-public class inside the same file though 
+    
+    ```java
+    # foo.java file
+    
+    public class Foo {
+    }
+    
+    class FooHelper {
+    }
+    ```
