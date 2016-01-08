@@ -16,6 +16,37 @@ public class Main {
         // this is because we are using a raw type
         rawBox.set(10);
         System.out.println("rawBox: " + rawBox);
+
+        Pair<Integer, String> p1 = new Pair<>(1, "apple");
+        Pair<Integer, String> p2 = new Pair<>(2, "pear");
+        // boolean same = Util.<Integer, String>compare(p1, p2);
+        boolean same = Util.compare(p1, p2);
+        System.out.println("pairs are the same" + same);
+
+        Person person1 = new Person("foo");
+        Person person2 = new Person("bar");
+        System.out.println("person same: " + Util.compare(person1, person2));
+
+        Box<String> box1 = new Box<>();
+        box1.set("foo");
+        Box<String> box2 = new Box<>();
+        box2.set("bar");
+        System.out.println("boxes the same: " + Util.compare(box1, box2));
+
+        Box<Integer> box3 = new Box<>();
+        box3.set(1);
+        Box<Integer> box4 = new Box<>();
+        box4.set(10);
+        System.out.println("boxes the same: " + Util.compare(box3, box4));
+        // System.out.println("boxes the same: " + Util.compare(box1, box4)); // type-error
+
+        // is the magic of raw types ? no type error
+        // TODO: is which case is this a bad idea ? make it crash
+        Box rawBox1 = new Box<>();
+        rawBox1.set(1);
+        Box rawBox2 = new Box<>();
+        rawBox2.set("10");
+        System.out.println("raw boxes the same: " + Util.compare(rawBox1, rawBox2));
     }
 
     static <T> T pick(T a1, T a2) {
