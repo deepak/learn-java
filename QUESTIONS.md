@@ -668,3 +668,25 @@
         System.out.println("rawBox: " + rawBox);
       }
     ```
+    
+44. Intellij add comments (glypy ? ie. //) to the extreme left
+    want it nearer to the line
+    
+    rather than:
+    ```java
+//        Box<String> box1 = new Box<>();
+//        box1.set("foo");
+//        Box<String> box2 = new Box<>();
+//        box2.set("bar");
+//        System.out.println("boxes the same: " + Util.compare(box1, box2));
+    ```
+    
+    more like:
+    
+    ```java
+    // Box<String> box1 = new Box<>();
+    // box1.set("foo");
+    // Box<String> box2 = new Box<>();
+    // box2.set("bar");
+    // System.out.println("boxes the same: " + Util.compare(box1, box2));
+    ```
