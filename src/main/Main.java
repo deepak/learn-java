@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -64,6 +65,20 @@ public class Main {
         // type-error. should implement Comparable<Person>
         System.out.println("persons >: " + countGreaterThan(persons, person1));
         // works after implementing it
+
+        NumberList<Number> numberList = new NumberList<>();
+        // NumberList<String> numberList2 = new NumberList<>(); // type-error
+        numberList.add(10);
+        numberList.add(10.10);
+        System.out.println("number list: " + numberList);
+        // numberList.add("foo"); // type-error
+
+        NumberList rawNumberList = new NumberList<>();
+        rawNumberList.add(15);
+        rawNumberList.add(15.10);
+        System.out.println("number list: " + rawNumberList);
+        rawNumberList.add("foo"); // not a type-error. how to get a runtime error
+        System.out.println("number list: " + rawNumberList);
     }
 
     public static <T extends Comparable<T>> int countGreaterThan(T[] anArray, T x) {

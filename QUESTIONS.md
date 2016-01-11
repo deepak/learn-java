@@ -853,3 +853,22 @@
         }
     }
     ```
+    
+46. how to easily implement `toString` for class extending ArrayList ?
+    can copy-paste from AbstractCollection but 
+    Intellij does not generate it ? 
+
+    ```java
+    public class NumberList<E extends Number> extends ArrayList<E> {
+        @Override
+        public Stream<E> parallelStream() {
+            return null;
+        }
+    
+        @Override
+        public Stream<E> stream() {
+            return null;
+        }
+    }
+    ```
+    
