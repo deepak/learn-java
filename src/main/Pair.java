@@ -16,7 +16,7 @@ public class Pair<K, V> {
     public V getValue() { return value; }
 }
 
-class Person {
+class Person implements Comparable<Person> {
     private String name;
 
     public Person(String name) {
@@ -25,6 +25,18 @@ class Person {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return getName().compareTo(o.getName());
     }
 }
 

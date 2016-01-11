@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -53,6 +55,27 @@ public class Main {
         System.out.println("rawPersonBox: " + rawPersonBox);
 
         // rawPersonBox.set("foo"); // is a type-error. why now ?
+
+        Integer[] ints = new Integer[] { 1, 2, 3, 4, 5};
+        System.out.println("greater than 3: " + countGreaterThan(ints, 3));
+
+        Person[] persons = new Person[] { person1, person2 };
+        System.out.println(Arrays.toString(persons));
+        // type-error. should implement Comparable<Person>
+        System.out.println("persons >: " + countGreaterThan(persons, person1));
+        // works after implementing it
+    }
+
+    public static <T extends Comparable<T>> int countGreaterThan(T[] anArray, T x) {
+        int count = 0;
+
+        for (T elem : anArray) {
+            if (x.compareTo(elem) > 0) {
+                ++count;
+            }
+        }
+
+        return count;
     }
 
     static <T> T pick(T a1, T a2) {
