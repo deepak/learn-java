@@ -47,6 +47,12 @@ public class Main {
         Box rawBox2 = new Box<>();
         rawBox2.set("10");
         System.out.println("raw boxes the same: " + Util.compare(rawBox1, rawBox2));
+
+        PersonBox rawPersonBox = new PersonBox();
+        rawPersonBox.set(person1);
+        System.out.println("rawPersonBox: " + rawPersonBox);
+
+        // rawPersonBox.set("foo"); // is a type-error. why now ?
     }
 
     static <T> T pick(T a1, T a2) {

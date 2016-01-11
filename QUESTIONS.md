@@ -690,3 +690,166 @@
     // box2.set("bar");
     // System.out.println("boxes the same: " + Util.compare(box1, box2));
     ```
+    
+45. what is the big deal with raw types ? and how to make it crash
+
+    ```java
+    public class Main {
+    
+        public static void main(String[] args) {
+            Box<String> stringBox = new Box<>();
+            stringBox.set("hop");
+            System.out.println("stringBox: " + stringBox);
+            // stringBox.set(10); // is a type-error
+    
+            Box rawBox = new Box<String>();
+            rawBox.set("rat");
+            System.out.println("rawBox: " + rawBox);
+    
+            // not a type-error even though variable is initialized as `Box<String>()`
+            // this is because we are using a raw type
+            rawBox.set(10);
+            System.out.println("rawBox: " + rawBox);
+    
+            Pair<Integer, String> p1 = new Pair<>(1, "apple");
+            Pair<Integer, String> p2 = new Pair<>(2, "pear");
+            // boolean same = Util.<Integer, String>compare(p1, p2);
+            boolean same = Util.compare(p1, p2);
+            System.out.println("pairs are the same" + same);
+    
+            Person person1 = new Person("foo");
+            Person person2 = new Person("bar");
+            System.out.println("person same: " + Util.compare(person1, person2));
+    
+            Box<String> box1 = new Box<>();
+            box1.set("foo");
+            Box<String> box2 = new Box<>();
+            box2.set("bar");
+            System.out.println("boxes the same: " + Util.compare(box1, box2));
+    
+            Box<Integer> box3 = new Box<>();
+            box3.set(1);
+            Box<Integer> box4 = new Box<>();
+            box4.set(10);
+            System.out.println("boxes the same: " + Util.compare(box3, box4));
+            // System.out.println("boxes the same: " + Util.compare(box1, box4)); // type-error
+    
+            // is the magic of raw types ? no type error
+            // TODO: is which case is this a bad idea ? make it crash
+            Box rawBox1 = new Box<>();
+            rawBox1.set(1);
+            Box rawBox2 = new Box<>();
+            rawBox2.set("10");
+            System.out.println("raw boxes the same: " + Util.compare(rawBox1, rawBox2));
+    
+            PersonBox rawPersonBox = new PersonBox();
+            rawPersonBox.set(person1);
+            System.out.println("rawPersonBox: " + rawPersonBox);
+    
+            // rawPersonBox.set("foo"); // is a type-error. why now ?
+        }
+    }
+    
+    public class Box<T> {
+        private T t;
+    
+        public Box() {
+            // noop
+        }
+    
+        public void set(T t) {
+            this.t = t;
+        }
+    
+        public T get() {
+            return t;
+        }
+    
+        @Override
+        public String toString() {
+            return "Box{" +
+                    "t=" + get() +
+                    '}';
+        }
+    }
+    
+    class PersonBox<T extends Person> {
+        private T t;
+    
+        public PersonBox() {
+            // noop
+        }
+    
+        public void set(T t) {
+            this.t = t;
+        }
+    
+        public T get() {
+            return t;
+        }
+    
+        @Override
+        public String toString() {
+            return "PersonBox{" +
+                    "name=" + get().getName() +
+                    '}';
+        }
+    }
+    
+    public class Pair<K, V> {
+    
+        private K key;
+        private V value;
+    
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+    
+        public void setKey(K key) { this.key = key; }
+        public void setValue(V value) { this.value = value; }
+        public K getKey()   { return key; }
+        public V getValue() { return value; }
+    }
+    
+    class Person {
+        private String name;
+    
+        public Person(String name) {
+            this.name = name;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    }
+    
+    class Util {
+        public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) {
+            return p1.getKey().equals(p2.getKey()) &&
+                    p1.getValue().equals(p2.getValue());
+        }
+    
+        public static <T> boolean compare(Box<T> b1, Box<T> b2) {
+            // will not allow me to call person specific code
+            // or even call instanceof
+    
+            // type-error: cannot cast
+            // if (b1 instanceof Person) {
+            //     // type-error: cannot resolve getName
+            //     return b1.get().getName().equals(b2.get().getName());
+            // }
+            return b1.get().equals(b2.get());
+        }
+    
+        // clashes with `public static <T> boolean compare(Box<T> b1, Box<T> b2)` above
+        // due to type erasure
+        // public static <T extends Person> boolean compare(Box<T> b1, Box<T> b2) {
+        //    return b1.get().getName().equals(b2.get().getName());
+        // }
+    
+        public static boolean compare(Person p1, Person p2) {
+            return p1.getName().equals(p2.getName());
+        }
+    }
+    ```
