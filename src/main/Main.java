@@ -1,128 +1,72 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Box<String> stringBox = new Box<>();
-        stringBox.set("hop");
-        System.out.println("stringBox: " + stringBox);
-        // stringBox.set(10); // is a type-error
+        Number[] numberArr = new Number[5];
+        numberArr[0] = 10;
+        numberArr[1] = 10.10;
 
-        Box rawBox = new Box<String>();
-        rawBox.set("rat");
-        System.out.println("rawBox: " + rawBox);
+        printArr(numberArr);
 
-        // not a type-error even though variable is initialized as `Box<String>()`
-        // this is because we are using a raw type
-        rawBox.set(10);
-        System.out.println("rawBox: " + rawBox);
+        Integer[] intArr = new Integer[5];
+        intArr[0] = 10;
 
-        Pair<Integer, String> p1 = new Pair<>(1, "apple");
-        Pair<Integer, String> p2 = new Pair<>(2, "pear");
-        // boolean same = Util.<Integer, String>compare(p1, p2);
-        boolean same = Util.compare(p1, p2);
-        System.out.println("pairs are the same" + same);
+        // Integer[] is a subclass of Number[]
+        // so this works. substitution principle
+        printArr(intArr);
 
-        Person person1 = new Person("foo");
-        Person person2 = new Person("bar");
-        System.out.println("person same: " + Util.compare(person1, person2));
-
-        Box<String> box1 = new Box<>();
-        box1.set("foo");
-        Box<String> box2 = new Box<>();
-        box2.set("bar");
-        System.out.println("boxes the same: " + Util.compare(box1, box2));
-
-        Box<Integer> box3 = new Box<>();
-        box3.set(1);
-        Box<Integer> box4 = new Box<>();
-        box4.set(10);
-        System.out.println("boxes the same: " + Util.compare(box3, box4));
-        // System.out.println("boxes the same: " + Util.compare(box1, box4)); // type-error
-
-        // is the magic of raw types ? no type error
-        // TODO: is which case is this a bad idea ? make it crash
-        Box rawBox1 = new Box<>();
-        rawBox1.set(1);
-        Box rawBox2 = new Box<>();
-        rawBox2.set("10");
-        System.out.println("raw boxes the same: " + Util.compare(rawBox1, rawBox2));
-
-        PersonBox rawPersonBox = new PersonBox();
-        rawPersonBox.set(person1);
-        System.out.println("rawPersonBox: " + rawPersonBox);
-
-        // rawPersonBox.set("foo"); // is a type-error. why now ?
-
-        Integer[] ints = new Integer[] { 1, 2, 3, 4, 5};
-        System.out.println("greater than 3: " + countGreaterThan(ints, 3));
-
-        Person[] persons = new Person[] { person1, person2 };
-        System.out.println(Arrays.toString(persons));
-        // type-error. should implement Comparable<Person>
-        System.out.println("persons >: " + countGreaterThan(persons, person1));
-        // works after implementing it
-
-        NumberList<Number> numberList = new NumberList<>();
-        // NumberList<String> numberList2 = new NumberList<>(); // type-error
+        List<Number> numberList = new ArrayList<>(10);
         numberList.add(10);
         numberList.add(10.10);
-        System.out.println("number list: " + numberList);
-        // numberList.add("foo"); // type-error
 
-        NumberList rawNumberList = new NumberList<>();
-        rawNumberList.add(15);
-        rawNumberList.add(15.10);
-        System.out.println("number list: " + rawNumberList);
-        rawNumberList.add("foo"); // not a type-error. how to get a runtime error
-        System.out.println("number list: " + rawNumberList);
+        printNumberList1(numberList);
+        printNumberList2(numberList);
+
+        List<Integer> integerList = new ArrayList<>(10);
+        integerList.add(10);
+        integerList.add(20);
+
+        // type-error
+        // List<Integer> is NOT a subclass of List<Number>
+        // so this does not work
+        // javac gets the error right
+        // Error:(36, 26) java: incompatible types: java.util.List<java.lang.Integer> cannot be converted to java.util.List<java.lang.Number>
+        // but Intellj gets it wrong, printNumberList1(java.util.List<java.lang.Number> in Main cannot be applied to (java.util.List<java.lang.Integer>)
+        // printNumberList1(integerList);
+
+        // this works though as it uses wildcards
+        printNumberList2(integerList);
     }
 
-    class PersonFoo extends Person implements Foo {
-        public PersonFoo(String name) {
-            super(name);
+    // Integer[] is a subclass of Number[]
+    public static void printArr(Number[] arr) {
+        System.out.println("----> printing array");
+        for (Number n : arr) {
+            if (n == null) { break; }
+
+            System.out.println(n.getClass() + "{" + n + "}");
         }
+        System.out.println("----> done");
+    }
 
-        @Override
-        public void process() {
-
+    // List<Integer> is NOT a subclass of List<Number>
+    public static void printNumberList1(List<Number> list) {
+        System.out.println("----> printing list");
+        for (Number n : list) {
+            System.out.println(n.getClass() + "{" + n + "}");
         }
+        System.out.println("----> done");
     }
 
-    public static void process(List<? extends Foo> list) {
-        for (Foo elem : list) {
+    public static void printNumberList2(List<? extends Number> list) {
+        System.out.println("----> printing list with wildcard");
+        for (Number n : list) {
+            System.out.println(n.getClass() + "{" + n + "}");
         }
-    }
-
-    public static <T extends Comparable<T>> int countGreaterThan(T[] anArray, T x) {
-        int count = 0;
-
-        for (T elem : anArray) {
-            if (x.compareTo(elem) > 0) {
-                ++count;
-            }
-        }
-
-        return count;
-    }
-
-    static <T> T pick(T a1, T a2) {
-        return a2;
-    }
-
-    public static <T> void swapItems(int i, int j, T[] arr) {
-        T temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    public static void swapObjects(int i, int j, Object[] arr) {
-        Object temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        System.out.println("----> done");
     }
 }
