@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -79,6 +80,22 @@ public class Main {
         System.out.println("number list: " + rawNumberList);
         rawNumberList.add("foo"); // not a type-error. how to get a runtime error
         System.out.println("number list: " + rawNumberList);
+    }
+
+    class PersonFoo extends Person implements Foo {
+        public PersonFoo(String name) {
+            super(name);
+        }
+
+        @Override
+        public void process() {
+
+        }
+    }
+
+    public static void process(List<? extends Foo> list) {
+        for (Foo elem : list) {
+        }
     }
 
     public static <T extends Comparable<T>> int countGreaterThan(T[] anArray, T x) {

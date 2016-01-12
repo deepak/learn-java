@@ -872,3 +872,13 @@
     }
     ```
     
+47. how to write ?
+
+    ```java
+    // works
+    public class NumberList<E extends Number> extends ArrayList<E>
+    
+    // does not work. how to write this
+    class UntilNumberList<? extends Number> extends ArrayList<?>
+    ```
+

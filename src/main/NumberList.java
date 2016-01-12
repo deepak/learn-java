@@ -16,3 +16,6 @@ public class NumberList<E extends Number> extends ArrayList<E> {
         return null;
     }
 }
+
+// how to write this
+// class UntilNumberList<? extends Number> extends ArrayList<?>
