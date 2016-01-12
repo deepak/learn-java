@@ -880,6 +880,12 @@
     
     // does not work. how to write this
     class UntilNumberList<? extends Number> extends ArrayList<?>
+    
+    // works
+    public static <T extends Object> void printValue(T element)
+    
+    // how to write
+    public static <? extends Object> void printValue(? element)
     ```
 
 48. cannot instantiate array of type parameter. why ?
@@ -971,4 +977,21 @@
     }
     ```
     
+50. is there a difference btw int and Integer array ?
+    or is it autoboxed ?
+    and an Integer (boxed) array is also an Object ?
+
+    ```java
+    int value = 20;
+    
+    // autoboxing
+    List<Object> list3 = new ArrayList<>(10);
+    list3.add(10);
+    list3.add(value); //works. even though List is of Object and this is an int, a primitive type
+    list3.add(10.10);
+    list3.add("foo");
+    list3.add(new Integer[] { 4, 5, 6}); // integer array is also an Object ?
+    list3.add(new int[] { 1, 2, 3}); // works as well
+    printList(list3);
+    ```
     

@@ -6,67 +6,44 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Number[] numberArr = new Number[5];
-        numberArr[0] = 10;
-        numberArr[1] = 10.10;
+        List<Object> list1 = new ArrayList<>(10);
+        list1.add(10.10);
+        list1.add("foo");
 
-        printArr(numberArr);
+        printList(list1);
 
-        Integer[] intArr = new Integer[5];
-        intArr[0] = 10;
-
-        // Integer[] is a subclass of Number[]
-        // so this works. substitution principle
-        printArr(intArr);
-
-        List<Number> numberList = new ArrayList<>(10);
-        numberList.add(10);
-        numberList.add(10.10);
-
-        printNumberList1(numberList);
-        printNumberList2(numberList);
-
-        List<Integer> integerList = new ArrayList<>(10);
-        integerList.add(10);
-        integerList.add(20);
-
+        List<?> list2 = new ArrayList<>(10);
+        // what an error message from javac
+        // Error:(18, 14) java: no suitable method found for add(int)
+        // method java.util.Collection.add(capture#1 of ?) is not applicable
+        //         (argument mismatch; int cannot be converted to capture#1 of ?)
+        // method java.util.List.add(capture#1 of ?) is not applicable
+        //        (argument mismatch; int cannot be converted to capture#1 of ?)
+        // thankfully Intellij has a better error message
+        // add(capture<?>) in List cannot be applied to (int)
         // type-error
-        // List<Integer> is NOT a subclass of List<Number>
-        // so this does not work
-        // javac gets the error right
-        // Error:(36, 26) java: incompatible types: java.util.List<java.lang.Integer> cannot be converted to java.util.List<java.lang.Number>
-        // but Intellj gets it wrong, printNumberList1(java.util.List<java.lang.Number> in Main cannot be applied to (java.util.List<java.lang.Integer>)
-        // printNumberList1(integerList);
+        // list2.add(10);
+        printList(list2);
 
-        // this works though as it uses wildcards
-        printNumberList2(integerList);
+        int value = 20;
+        List<Object> list3 = new ArrayList<>(10);
+        list3.add(10);
+        list3.add(value);
+        list3.add(10.10);
+        list3.add("foo");
+        list3.add(new Integer[] { 4, 5, 6});
+        list3.add(new int[] { 1, 2, 3}); // works as well
+        printList(list3);
     }
 
-    // Integer[] is a subclass of Number[]
-    public static void printArr(Number[] arr) {
-        System.out.println("----> printing array");
-        for (Number n : arr) {
-            if (n == null) { break; }
-
-            System.out.println(n.getClass() + "{" + n + "}");
+    public static void printList(List<?> list) {
+        for (Object elem: list) {
+            System.out.print(elem + " ");
         }
-        System.out.println("----> done");
+        System.out.println();
     }
 
-    // List<Integer> is NOT a subclass of List<Number>
-    public static void printNumberList1(List<Number> list) {
-        System.out.println("----> printing list");
-        for (Number n : list) {
-            System.out.println(n.getClass() + "{" + n + "}");
-        }
-        System.out.println("----> done");
-    }
+    public static <T extends Object> void printValue(T element) {
 
-    public static void printNumberList2(List<? extends Number> list) {
-        System.out.println("----> printing list with wildcard");
-        for (Number n : list) {
-            System.out.println(n.getClass() + "{" + n + "}");
-        }
-        System.out.println("----> done");
     }
 }
